@@ -1,0 +1,10 @@
+.row
+  .columns.small-8.small-centered
+    = simple_form_for song do |f|
+      = f.input :title
+      = f.input :artist
+      = f.input :text
+      = f.input :single
+      = f.input :rating
+      = f.input :release_date
+      = f.button :submit, "Save"
