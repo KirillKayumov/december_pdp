@@ -1,0 +1,22 @@
+.song-wrapper
+  .song
+    .song-image
+    .song-content
+      span.song-title = song.title
+      span.song-artist = song.artist
+
+      .song-meta
+        .song-release_date
+          = song.release_date
+          br
+          span.meta_label Release Date
+
+        .song-rating
+          = song.rating
+          br
+          span.meta_label Rating
+
+        .song-author
+          = song.user.full_name
+          br
+          span.meta_label Added by

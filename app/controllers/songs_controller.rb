@@ -1,5 +1,5 @@
 class SongsController < ApplicationController
-  expose(:songs) { |default| default.ordered }
+  expose(:songs) { |default| default.ordered.with_user }
   expose(:song, attributes: :song_params)
 
   def index

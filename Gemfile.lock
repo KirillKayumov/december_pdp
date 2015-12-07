@@ -1,4 +1,10 @@
 GIT
+  remote: git://github.com/fs/fragments.js.git
+  revision: 4d786b7a53ccc487dec3008e789aaaf14b8b0c5d
+  specs:
+    fragments.js (0.0.1)
+
+GIT
   remote: https://github.com/jfirebaugh/skim
   revision: ca1e39fae0f957634575d6f8b53c5d66fda7f925
   specs:
@@ -215,6 +221,10 @@ GEM
     parser (2.2.2.3)
       ast (>= 1.1, < 3.0)
     pg (0.17.1)
+    pg_search (1.0.5)
+      activerecord (>= 3.1)
+      activesupport (>= 3.1)
+      arel
     phantomjs (1.9.8.0)
     powerpack (0.1.1)
     pry (0.9.12.6)
@@ -421,6 +431,7 @@ DEPENDENCIES
   formulaic
   foundation-icons-sass-rails
   foundation-rails
+  fragments.js!
   fuubar (~> 2.0.0.rc1)
   google-analytics-rails
   interactor
@@ -434,6 +445,7 @@ DEPENDENCIES
   metamagic
   newrelic_rpm
   pg
+  pg_search
   pry-rails
   puma
   pundit

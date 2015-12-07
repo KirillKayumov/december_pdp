@@ -1,0 +1,9 @@
+.songs data-fragment-id="songs"
+  = songs.each_slice(3) do |song1, song2, song3|
+    .row
+      .small-4.columns
+        = render song1
+      .small-4.columns
+        = render song2 if song2.present?
+      .small-4.columns
+        = render song3 if song3.present?
