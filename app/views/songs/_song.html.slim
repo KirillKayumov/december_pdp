@@ -1,6 +1,7 @@
 .song-wrapper
   .song
     .song-image
+      = image_tag(attachment_url(song, :image, :fill, 400, 400))
     .song-content
       span.song-title = song.title
       span.song-artist = song.artist

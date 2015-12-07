@@ -11,6 +11,8 @@ class Song < ActiveRecord::Base
   scope :with_rating, -> (rating) { where(rating: rating) }
   scope :with_user, -> { includes(:user) }
 
+  attachment :image
+
   %w(title text artist).each do |column|
     pg_search_scope "with_#{column}", against: column, using: { tsearch: { prefix: true } }
   end

@@ -6,6 +6,17 @@
   height: 400px;
   background-color: black;
   color: white;
+  position: relative;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent 20%, #000 56%);
+  }
 }
 
 .song-title {
@@ -25,16 +36,18 @@
 }
 
 .song-image {
-  height: 50%;
+  height: 60%;
+  overflow: hidden;
 }
 
 .song-content {
-  padding: 20px;
+  padding: 0 20px;
+  position: relative;
 }
 
 .song-meta {
   font-size: 0.8rem;
-  margin-top: 30px;
+  margin-top: 10px;
 }
 
 .song-release_date, .song-rating, .song-author {
