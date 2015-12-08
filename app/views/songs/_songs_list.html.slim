@@ -7,3 +7,8 @@
         = render song2 if song2.present?
       .small-4.columns
         = render song3 if song3.present?
+
+  - if songs.empty?
+    .row
+      .small-3.small-centered.columns
+        h1 No results

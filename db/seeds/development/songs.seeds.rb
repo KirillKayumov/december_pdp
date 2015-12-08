@@ -22,7 +22,8 @@ FactoryGirl.create :song,
   artist: "Wiz Khalifa",
   lyrics: lyrics("we_dem_boyz.txt"),
   user: user,
-  image: image("on_my_level.jpg")
+  image: image("on_my_level.jpg"),
+  single: true
 
 FactoryGirl.create :song,
   title: "Hell Of A Life",
@@ -43,7 +44,8 @@ FactoryGirl.create :song,
   artist: "The Game & 50 Cent",
   lyrics: lyrics("hate_it_or_love_it.txt"),
   user: user,
-  image: image("hate_it_or_love_it.jpg")
+  image: image("hate_it_or_love_it.jpg"),
+  single: true
 
 FactoryGirl.create :song,
   title: "New World",
@@ -71,7 +73,8 @@ FactoryGirl.create :song,
   artist: "Drake",
   lyrics: lyrics("the_motion.txt"),
   user: user,
-  image: image("the_motion.jpg")
+  image: image("the_motion.jpg"),
+  single: true
 
 FactoryGirl.create :song,
   title: "Good Guys Get Left Behind",

@@ -5,45 +5,46 @@
       class: "search_form",
       data: { remote: true, behavior: "fragments" } do
 
-      .row
-        .small-6.columns
-          .small-2.columns
-            = label_tag :title, "Title:", class: "inline left"
-          .small-10.columns
-            = text_field_tag :title
-        .small-6.columns
-          .small-2.columns
-            = label_tag :artist, "Artist:", class: "inline left"
-          .small-10.columns
-            = text_field_tag :artist
+      = fields_for :search do |f|
+        .row
+          .small-6.columns
+            .small-2.columns
+              = f.label :title, "Title:", class: "inline left"
+            .small-10.columns
+              = f.text_field :title
+          .small-6.columns
+            .small-2.columns
+              = f.label :artist, "Artist:", class: "inline left"
+            .small-10.columns
+              = f.text_field :artist
 
-      .row
-        .small-12.columns
-          .small-1.columns
-            = label_tag :lyrics, "Lyrics:", class: "inline left"
-          .small-11.columns
-            = text_field_tag :lyrics
+        .row
+          .small-12.columns
+            .small-1.columns
+              = f.label :lyrics, "Lyrics:", class: "inline left"
+            .small-11.columns
+              = f.text_field :lyrics
 
-      .row
-        .small-3.columns
-          .small-4.columns
-            = label_tag :single, "Single:", class: "inline left"
-          .small-8.columns
-            .switch.round.small
-              = check_box_tag :single
-              = label_tag :single
+        .row
+          .small-3.columns
+            .small-4.columns
+              = f.label :single, "Single:", class: "inline left"
+            .small-8.columns
+              .switch.round.small
+                = f.check_box :single, {}, true, false
+                = f.label :single
 
-        .small-6.columns
-          .small-4.columns
-            = label_tag :release_date, "Release date:", class: "inline left"
-          .small-8.columns
-            = date_field_tag :release_date
+          .small-6.columns
+            .small-4.columns
+              = f.label :release_date, "Release date:", class: "inline left"
+            .small-8.columns
+              = f.date_field :release_date
 
-        .small-3.columns
-          .small-5.columns
-            = label_tag :rating, "Rating:", class: "inline left"
-          .small-7.columns
-            = number_field_tag :rating, "", min: 0, max: 10
+          .small-3.columns
+            .small-5.columns
+              = f.label :rating, "Rating:", class: "inline left"
+            .small-7.columns
+              = f.number_field :rating, min: 0, max: 10
 
       .row
         = submit_tag "Search", class: "button tiny secondary"
