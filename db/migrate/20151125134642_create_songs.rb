@@ -7,7 +7,7 @@ class CreateSongs < ActiveRecord::Migration
       t.text :text, default: "", null: false
       t.boolean :single
       t.date :release_date
-      t.float :rating
+      t.integer :rating
 
       t.references :user, index: true
 

@@ -38,7 +38,7 @@ class SongsController < ApplicationController
     params.require(:song).permit(
       :title,
       :artist,
-      :text,
+      :lyrics,
       :single,
       :rating,
       :release_date

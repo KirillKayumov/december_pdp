@@ -3,7 +3,7 @@ class Song < ActiveRecord::Base
 
   belongs_to :user
 
-  validates :title, :text, :artist, presence: true
+  validates :title, :lyrics, :artist, presence: true
 
   scope :ordered, -> { order(:created_at) }
   scope :single, -> { where(single: true) }
@@ -13,7 +13,7 @@ class Song < ActiveRecord::Base
 
   attachment :image
 
-  %w(title text artist).each do |column|
+  %w(title lyrics artist).each do |column|
     pg_search_scope "with_#{column}", against: column, using: { tsearch: { prefix: true } }
   end
 end

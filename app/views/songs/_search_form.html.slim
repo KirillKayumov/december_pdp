@@ -1,9 +1,49 @@
-= form_tag search_path, method: :get, data: { remote: true, behavior: "fragments" } do
-  = text_field_tag :title, "", placeholder: "Title"
-  = text_field_tag :artist, "", placeholder: "Artist"
-  = text_field_tag :text, "", placeholder: "Text"
-  = check_box_tag :single
-  = label_tag :single, "Search"
-  = date_field_tag :release_date
-  = number_field_tag :rating, placeholder: "Rating"
-  = submit_tag "Search"
+.row
+  .small-8.small-centered.columns
+    = form_tag search_path,
+      method: :get,
+      class: "search_form",
+      data: { remote: true, behavior: "fragments" } do
+
+      .row
+        .small-6.columns
+          .small-2.columns
+            = label_tag :title, "Title:", class: "inline left"
+          .small-10.columns
+            = text_field_tag :title
+        .small-6.columns
+          .small-2.columns
+            = label_tag :artist, "Artist:", class: "inline left"
+          .small-10.columns
+            = text_field_tag :artist
+
+      .row
+        .small-12.columns
+          .small-1.columns
+            = label_tag :lyrics, "Lyrics:", class: "inline left"
+          .small-11.columns
+            = text_field_tag :lyrics
+
+      .row
+        .small-3.columns
+          .small-4.columns
+            = label_tag :single, "Single:", class: "inline left"
+          .small-8.columns
+            .switch.round.small
+              = check_box_tag :single
+              = label_tag :single
+
+        .small-6.columns
+          .small-4.columns
+            = label_tag :release_date, "Release date:", class: "inline left"
+          .small-8.columns
+            = date_field_tag :release_date
+
+        .small-3.columns
+          .small-5.columns
+            = label_tag :rating, "Rating:", class: "inline left"
+          .small-7.columns
+            = number_field_tag :rating, "", min: 0, max: 10
+
+      .row
+        = submit_tag "Search", class: "button tiny secondary"
