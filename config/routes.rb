@@ -2,6 +2,6 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "songs#index"
 
-  resources :songs
+  resources :songs, except: :destroy
   resource :search, only: :show
 end

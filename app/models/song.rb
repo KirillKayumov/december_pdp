@@ -16,4 +16,6 @@ class Song < ActiveRecord::Base
   %w(title lyrics artist).each do |column|
     pg_search_scope "with_#{column}", against: column, using: { tsearch: { prefix: true } }
   end
+
+  delegate :full_name, to: :user, prefix: true
 end

@@ -4,7 +4,7 @@ FactoryGirl.define do
     artist "Song artist"
     lyrics "Song lyrics"
     single false
-    release_date { Faker::Date.between(1.year.ago, Date.today) }
+    release_date { Faker::Date.between(1.year.ago, Time.zone.today) }
     rating { Faker::Number.between(0, 10) }
 
     association :user

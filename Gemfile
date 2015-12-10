@@ -42,10 +42,11 @@ gem "seedbank"
 gem "stackprof"
 
 gem "pg_search"
-gem "fragments.js", github: "fs/fragments.js"
+gem "fragments.js", git: "https://github.com/fs/fragments.js.git"
 gem "refile", require: "refile/rails"
 gem "refile-mini_magick"
 gem "refile-s3"
+gem "sidekiq"
 
 group :staging, :production do
   gem "newrelic_rpm"
