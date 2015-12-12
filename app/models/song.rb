@@ -5,7 +5,9 @@ class Song < ActiveRecord::Base
 
   validates :title, :lyrics, :artist, presence: true
   validates :title, :artist, length: { maximum: 255 }
-  validates :rating, inclusion: { in: 0..10 }
+  validates :rating,
+    inclusion: { in: 0..10, message: "Rating value must be between 0 and 10" },
+    allow_nil: true
 
   scope :ordered, -> { order(:created_at) }
   scope :single, -> { where(single: true) }
@@ -18,6 +20,4 @@ class Song < ActiveRecord::Base
   %w(title lyrics artist).each do |column|
     pg_search_scope "with_#{column}", against: column, using: { tsearch: { prefix: true } }
   end
-
-  delegate :full_name, to: :user, prefix: true
 end

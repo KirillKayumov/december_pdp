@@ -1,6 +1,7 @@
 class SongsController < ApplicationController
-  expose(:songs) { |default| default.ordered.with_user }
-  expose(:song, attributes: :song_params)
+  expose_decorated(:songs) { |default| default.ordered.with_user }
+  expose_decorated(:song, attributes: :song_params)
+  expose(:decorated_song) { song.decorate }
 
   def index
   end
@@ -12,7 +13,7 @@ class SongsController < ApplicationController
     song.user = current_user
 
     if song.save
-      notify("New song is added!")
+      notify("#{decorated_song.short_info} song has been added!")
       redirect_to root_path
     else
       render :new
@@ -27,7 +28,7 @@ class SongsController < ApplicationController
 
   def update
     if song.save
-      notify("#{song.artist} – #{song.title} is updated!")
+      notify("#{decorated_song.short_info} song has been updated!")
       redirect_to song
     else
       render :edit

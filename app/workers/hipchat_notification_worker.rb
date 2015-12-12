@@ -2,7 +2,7 @@ class HipchatNotificationWorker
   include Sidekiq::Worker
 
   TOKEN = ENV.fetch("HIPCHAT_TOKEN")
-  ROOM = "PDP"
+  ROOM = ENV.fetch("HIPCHAT_ROOM")
   FROM = "December PDP"
 
   def perform(message)
