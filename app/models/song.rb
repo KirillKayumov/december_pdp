@@ -4,6 +4,8 @@ class Song < ActiveRecord::Base
   belongs_to :user
 
   validates :title, :lyrics, :artist, presence: true
+  validates :title, :artist, length: { maximum: 255 }
+  validates :rating, inclusion: { in: 0..10 }
 
   scope :ordered, -> { order(:created_at) }
   scope :single, -> { where(single: true) }

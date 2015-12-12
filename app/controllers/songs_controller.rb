@@ -12,6 +12,7 @@ class SongsController < ApplicationController
     song.user = current_user
 
     if song.save
+      notify("New song is added!")
       redirect_to root_path
     else
       render :new
@@ -26,6 +27,7 @@ class SongsController < ApplicationController
 
   def update
     if song.save
+      notify("#{song.artist} – #{song.title} is updated!")
       redirect_to song
     else
       render :edit
@@ -43,5 +45,9 @@ class SongsController < ApplicationController
       :rating,
       :release_date
     )
+  end
+
+  def notify(message)
+    HipchatNotificationWorker.perform_async(message)
   end
 end
