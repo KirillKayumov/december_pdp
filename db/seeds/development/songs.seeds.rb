@@ -4,7 +4,7 @@ class << self
   end
 
   def image(title)
-    Rack::Test::UploadedFile.new(File.expand_path("../images/#{title}", __FILE__))
+    Rack::Test::UploadedFile.new(File.expand_path("../images/#{title}", __FILE__), "image/jpeg")
   end
 end
 

@@ -44,7 +44,8 @@ class SongsController < ApplicationController
       :lyrics,
       :single,
       :rating,
-      :release_date
+      :release_date,
+      :image
     )
   end
 

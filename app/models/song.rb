@@ -9,13 +9,13 @@ class Song < ActiveRecord::Base
     inclusion: { in: 0..10, message: "Rating value must be between 0 and 10" },
     allow_nil: true
 
-  scope :ordered, -> { order(:created_at) }
+  scope :ordered, -> { order(created_at: :desc) }
   scope :single, -> { where(single: true) }
   scope :with_release_date, -> (date) { where(release_date: date) }
   scope :with_rating, -> (rating) { where(rating: rating) }
   scope :with_user, -> { includes(:user) }
 
-  attachment :image
+  attachment :image, type: :image
 
   %w(title lyrics artist).each do |column|
     pg_search_scope "with_#{column}", against: column, using: { tsearch: { prefix: true } }
