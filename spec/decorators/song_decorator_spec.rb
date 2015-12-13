@@ -40,5 +40,11 @@ describe SongDecorator do
     subject { decorated_song.release_date }
 
     it { is_expected.to eq("06/09/1995") }
+
+    context "when release date is NOT present" do
+      let(:song) { create :song, release_date: nil }
+
+      it { is_expected.to eq("n/a") }
+    end
   end
 end

@@ -20,6 +20,10 @@ class SongDecorator < ApplicationDecorator
   end
 
   def release_date
-    I18n.l(object.release_date, format: :ru_date)
+    if object.release_date
+      I18n.l(object.release_date, format: :ru_date)
+    else
+      "n/a"
+    end
   end
 end
