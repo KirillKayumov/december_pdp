@@ -10,7 +10,13 @@
 #= require current_user
 #= require skim
 #= require fragments
+#= require refile
+#= require vendor/all
 #= require_tree ../templates
 #= require_tree .
 
 $(document).foundation()
+
+$ ->
+  $(".date_picker").datepicker(language: "en", autoClose: true, clearButton: true)
+  $(".song_form").songForm()

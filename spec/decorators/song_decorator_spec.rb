@@ -35,10 +35,10 @@ describe SongDecorator do
   end
 
   describe "#release_date" do
-    let(:song) { create :song, release_date: Date.parse("2015/12/01") }
+    let(:song) { create :song, release_date: Date.parse("06/09/1995") }
 
     subject { decorated_song.release_date }
 
-    it { is_expected.to eq("12/01/2015") }
+    it { is_expected.to eq("06/09/1995") }
   end
 end

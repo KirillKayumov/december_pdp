@@ -20,6 +20,6 @@ class SongDecorator < ApplicationDecorator
   end
 
   def release_date
-    I18n.l(object.release_date, format: :us_date)
+    I18n.l(object.release_date, format: :ru_date)
   end
 end

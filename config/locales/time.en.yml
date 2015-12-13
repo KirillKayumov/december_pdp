@@ -8,4 +8,4 @@ en:
       us_time: '%I:%M %p'
   date:
     formats:
-      us_date: '%m/%d/%Y'
+      ru_date: '%d/%m/%Y'
