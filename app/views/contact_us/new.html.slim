@@ -1,0 +1,33 @@
+.row
+  .columns.small-7.small-centered
+    h2 Contact Us
+
+    = simple_form_for @form, url: contact_us_path, html: { novalidate: false } do |f|
+      .row
+        .columns.small-12
+          = f.input :full_name,
+            label: false,
+            placeholder: "Full Name",
+            autofocus: true,
+            input_html: { required: true, maxlength: 50 }
+      .row
+        .columns.small-6
+          = f.input :email,
+            label: false,
+            placeholder: "Email",
+            input_html: { required: true }
+        .columns.small-6
+          = f.input :phone_number,
+            label: false,
+            placeholder: "Phone number (format: 1234567890)",
+            input_html: { maxlength: 10 }
+      .row
+        .columns.small-12
+          = f.input :text,
+            as: :text,
+            label: false,
+            placeholder: "Tell us about your ideas...",
+            input_html: { rows: 6, required: true }
+      .row
+        .columns.small-12
+          = f.button :submit, "Send message"

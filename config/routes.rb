@@ -4,4 +4,7 @@ Rails.application.routes.draw do
 
   resources :songs
   resource :search, only: :show
+  resource :contact_us, only: :create do
+    get "/", action: :new
+  end
 end
