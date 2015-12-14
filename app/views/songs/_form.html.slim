@@ -1,0 +1,9 @@
+= simple_form_for song.object, html: { class: "song_form" } do |f|
+  = f.input :title, autofocus: true
+  = f.input :artist
+  = f.input :lyrics, input_html: { rows: 6 }
+  = f.input :single
+  = f.input :rating
+  = f.input :release_date, as: :string, input_html: { class: "date_picker" }
+  = f.input :image, as: :attachment, direct: true
+  = f.button :submit, "Save"

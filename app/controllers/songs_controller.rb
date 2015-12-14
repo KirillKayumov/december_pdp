@@ -2,6 +2,7 @@ class SongsController < ApplicationController
   respond_to :html
 
   before_action :authenticate_user!, except: :index
+  before_action :authorize_resource, only: %i(edit update destroy)
 
   expose_decorated(:songs) { |default| default.ordered }
   expose_decorated(:song, attributes: :song_params)
@@ -31,6 +32,11 @@ class SongsController < ApplicationController
     respond_with song
   end
 
+  def destroy
+    notify("#{decorated_song.short_info} song has been deleted!") if song.destroy
+    respond_with song, location: root_path
+  end
+
   private
 
   def song_params
@@ -47,5 +53,9 @@ class SongsController < ApplicationController
 
   def notify(message)
     HipchatNotificationWorker.perform_async(message)
+  end
+
+  def authorize_resource
+    authorize song, :manage?
   end
 end

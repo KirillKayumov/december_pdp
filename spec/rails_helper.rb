@@ -5,6 +5,7 @@ require File.expand_path("../../config/environment", __FILE__)
 require "rspec/rails"
 require "shoulda/matchers"
 require "sidekiq/testing"
+require "pundit/rspec"
 
 Sidekiq::Testing.fake!
 

@@ -8,7 +8,7 @@ describe SearchSongs do
         artist: "Song artist",
         lyrics: "Song lyrics",
         single: false,
-        release_date: 1.year.ago,
+        release_date: "06/09/1995",
         rating: 5
       }
     end
@@ -17,7 +17,7 @@ describe SearchSongs do
     let!(:song_artist) { create :song, default_params.merge(artist: "My Good artist") }
     let!(:song_lyrics) { create :song, default_params.merge(lyrics: "My Awesome lyrics") }
     let!(:song_single) { create :song, default_params.merge(single: true) }
-    let!(:song_release_date) { create :song, default_params.merge(release_date: 2.years.ago) }
+    let!(:song_release_date) { create :song, default_params.merge(release_date: "01/01/2010") }
     let!(:song_rating) { create :song, default_params.merge(rating: 10) }
 
     def results(params)
@@ -45,7 +45,7 @@ describe SearchSongs do
     end
 
     it "searches by release_date" do
-      params = { release_date: 2.years.ago }
+      params = { release_date: "01/01/2010" }
       expect(results(params)).to eq([song_release_date])
     end
 

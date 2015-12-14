@@ -8,7 +8,6 @@ describe SongsController do
   end
 
   describe "#create" do
-    let(:user) { create :user }
     let(:params) do
       {
         song: {
@@ -23,13 +22,25 @@ describe SongsController do
       post :create, params
     end
 
+    it "creates song" do
+      expect { do_create }.to change { Song.count }.by(1)
+    end
+
     it "creates job for hipchat notifications worker" do
       expect { do_create }.to change { HipchatNotificationWorker.jobs.size }.by(1)
+    end
+
+    context "when params are invalid" do
+      let(:params) { { song: { title: "Title" } } }
+
+      it "does NOT create job for hipchat notifications worker" do
+        expect { do_create }.to change { HipchatNotificationWorker.jobs.size }.by(0)
+      end
     end
   end
 
   describe "#update" do
-    let(:song) { create :song }
+    let(:song) { create :song, user: user }
     let(:params) do
       {
         id: song.id,
@@ -43,8 +54,41 @@ describe SongsController do
       put :update, params
     end
 
+    it "updates song" do
+      expect { do_update }.to change { song.reload.title }.to("New title")
+    end
+
     it "creates job for hipchat notifications worker" do
       expect { do_update }.to change { HipchatNotificationWorker.jobs.size }.by(1)
+    end
+
+    context "when params are invalid" do
+      let(:params) do
+        {
+          id: song.id,
+          song: { title: "" }
+        }
+      end
+
+      it "does NOT create job for hipchat notifications worker" do
+        expect { do_update }.to change { HipchatNotificationWorker.jobs.size }.by(0)
+      end
+    end
+  end
+
+  describe "#destroy" do
+    let!(:song) { create :song, user: user }
+
+    def do_destroy
+      delete :destroy, id: song.id
+    end
+
+    it "destroys song" do
+      expect { do_destroy }.to change { Song.count }.by(-1)
+    end
+
+    it "creates job for hipchat notifications worker" do
+      expect { do_destroy }.to change { HipchatNotificationWorker.jobs.size }.by(1)
     end
   end
 end
