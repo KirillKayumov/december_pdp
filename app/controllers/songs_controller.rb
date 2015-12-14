@@ -1,7 +1,7 @@
 class SongsController < ApplicationController
   respond_to :html
 
-  before_action :authenticate_user!, except: :index
+  before_action :authenticate_user!, except: %i(index show)
   before_action :authorize_resource, only: %i(edit update destroy)
 
   expose_decorated(:songs) { |default| default.ordered }

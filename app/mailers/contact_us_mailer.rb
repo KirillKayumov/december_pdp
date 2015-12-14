@@ -11,8 +11,7 @@ class ContactUsMailer < ActionMailer::Base
     mail(
       to: ADMIN_EMAIL,
       from: CONTACT_US_FROM_EMAIL,
-      subject: "New message from Contact Us",
-      cc: @email
+      subject: "New message from Contact Us"
     )
   end
 end
