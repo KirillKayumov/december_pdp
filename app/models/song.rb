@@ -13,7 +13,6 @@ class Song < ActiveRecord::Base
   scope :single, -> { where(single: true) }
   scope :with_release_date, -> (date) { where(release_date: date) }
   scope :with_rating, -> (rating) { where(rating: rating) }
-  scope :with_user, -> { includes(:user) }
 
   attachment :image, type: :image
 

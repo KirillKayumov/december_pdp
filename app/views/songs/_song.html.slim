@@ -1,5 +1,5 @@
 .song-wrapper
-  .song
+  = link_to song.object, class: "song_card" do
     .song-image
       = image_tag(attachment_url(song, :image, :fill, 400, 400))
     .song-content
@@ -17,7 +17,5 @@
           br
           span.meta_label Rating
 
-        .song-author
-          = song.added_by
-          br
-          span.meta_label Added by
+        - if song.single?
+          span.meta_label Single

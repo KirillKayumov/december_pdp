@@ -3,6 +3,7 @@ class SongDecorator < ApplicationDecorator
     :title,
     :lyrics,
     :single,
+    :single?,
     :image,
     :image_attacher,
     :user_full_name

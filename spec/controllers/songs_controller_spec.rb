@@ -1,6 +1,12 @@
 require "rails_helper"
 
 describe SongsController do
+  let(:user) { create(:user) }
+
+  before do
+    sign_in user
+  end
+
   describe "#create" do
     let(:user) { create :user }
     let(:params) do
@@ -15,10 +21,6 @@ describe SongsController do
 
     def do_create
       post :create, params
-    end
-
-    before do
-      allow(controller).to receive(:current_user).and_return(user)
     end
 
     it "creates job for hipchat notifications worker" do

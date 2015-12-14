@@ -1,0 +1,24 @@
+.row
+  .song.columns.small-10.small-centered
+    .song-image
+      = image_tag(attachment_url(song, :image, :fill, 300, 300))
+    h2 = song.title
+    h4 = song.artist
+
+    .song-meta
+      span.song-release_date
+        ' Release date:
+        = song.release_date
+      span.song-rating
+        ' Rating:
+        = song.rating
+      span.song-added_by
+        ' Added by:
+        = song.added_by
+      - if song.single?
+        span.meta_label Single
+
+    .song-lyrics
+      - song.lyrics.split("\n").each do |paragraph|
+        = paragraph
+        br
