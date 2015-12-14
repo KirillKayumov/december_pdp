@@ -19,6 +19,7 @@ class SearchSongs
   before do
     self.songs = Song.all
     filter_params
+    parse_date_params
   end
 
   def call
@@ -50,5 +51,9 @@ class SearchSongs
 
   def filter_params
     params.delete_if { |_, value| value.blank? }
+  end
+
+  def parse_date_params
+    params[:release_date] = Date.parse(params[:release_date]) if params[:release_date]
   end
 end
