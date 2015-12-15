@@ -15,9 +15,7 @@ class SongsController < ApplicationController
   end
 
   def create
-    song.user = current_user
-
-    notify("#{decorated_song.short_info} song has been added!") if song.save
+    CreateSong.call(song: song, current_user: current_user)
     respond_with song, location: root_path
   end
 
@@ -28,12 +26,12 @@ class SongsController < ApplicationController
   end
 
   def update
-    notify("#{decorated_song.short_info} song has been updated!") if song.save
+    UpdateSong.call(song: song)
     respond_with song
   end
 
   def destroy
-    notify("#{decorated_song.short_info} song has been deleted!") if song.destroy
+    DestroySong.call(song: song)
     respond_with song, location: root_path
   end
 
@@ -49,10 +47,6 @@ class SongsController < ApplicationController
       :release_date,
       :image
     )
-  end
-
-  def notify(message)
-    HipchatNotificationWorker.perform_async(message)
   end
 
   def authorize_resource
